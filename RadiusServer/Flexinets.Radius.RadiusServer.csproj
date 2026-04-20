@@ -1,7 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net471</TargetFrameworks>
+    <!-- netstandard2.0 only. Dropped net471 — the .NET Framework target only
+         existed for legacy Windows-service hosts that no longer exist, and it
+         required the 4.7.1 Developer Pack to be installed just to load the
+         project in VS. netstandard2.0 is consumed by login.local (net10.0)
+         without issue. -->
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Version>2.0.0</Version>
     <PackageProjectUrl>https://github.com/vforteli/RadiusServer</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/vforteli/RadiusServer/blob/master/LICENSE</PackageLicenseUrl>
@@ -12,17 +17,6 @@ For an example server implementation hosted in a windows service, see: https://g
     <Authors>Verner Fortelius</Authors>
     <PackageTags>Radius Radius-Server</PackageTags>
     <AssemblyVersion>2.0.0</AssemblyVersion>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard2.0|AnyCPU'">
-    <ShouldCreateLogs>True</ShouldCreateLogs>
-    <AdvancedSettingsExpanded>True</AdvancedSettingsExpanded>
-    <UpdateAssemblyVersion>False</UpdateAssemblyVersion>
-    <UpdateAssemblyFileVersion>False</UpdateAssemblyFileVersion>
-    <UpdateAssemblyInfoVersion>False</UpdateAssemblyInfoVersion>
-    <UpdatePackageVersion>False</UpdatePackageVersion>
-    <AssemblyInfoVersionType>SettingsVersion</AssemblyInfoVersionType>
-    <InheritWinAppVersionFrom>None</InheritWinAppVersionFrom>
   </PropertyGroup>
 
   <ItemGroup>
